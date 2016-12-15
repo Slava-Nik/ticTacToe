@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-<h1 class="gameTitle">Крестики-нолики <span class="createdBy">(by Slava-Nik ©)<span></h1>
+<h1 class="gameTitle">Крестики-Нолики <span class="createdBy">(by Slava-Nik ©)<span></h1>
 <table id="field">
 		<tbody>
 			<tr>
@@ -30,11 +30,17 @@
 
 </div>	
 
-<div class="overlay" hidden></div>
+<div class="beforeGame">
+	<p class="chooseTitle">Выберете режим игры:</p>
+	<button>Один игрок</button>
+	<button>Два игрока</button>
+</div>
+<div class="overlay"></div>
 <div class="resultMessage" hidden>
 	<h2 class="resultTitle">Победили крестики!</h2>
 	<button class="continue">Продолжить игру!</button>
 </div>
+
 
 
 <script src="js/ticTacToe.js"></script>

@@ -1,12 +1,15 @@
 function TicTacToe(options){
 	"use strict";
 	var elem = options.elem;
+	var isOnePlayer = false;
   var moveCounter = 0;
 
   var overlay = document.querySelector(".overlay");
   var resultMessage = document.querySelector(".resultMessage");
   var messageTitle = resultMessage.children[0];
   var buttonContinue = resultMessage.children[1];
+
+  selectModeOfGame();
 
 	function makeMove(td) {
 		var sign = document.createElement("div");
@@ -18,7 +21,32 @@ function TicTacToe(options){
 		td.className = sign.className + "Sign";
 
 		moveCounter++;
+
   }
+
+  
+  function computerMove(){
+  	var sign = document.createElement("div");
+  	sign.className="zero";
+  	var cells = elem.querySelectorAll("td");
+  	var freeCells = [];
+
+  	for(var i = 0; i < cells.length; i++){
+  		if(!cells[i].className){
+				freeCells.push(cells[i]);
+  		}
+  	}
+  	var randomCell = Math.floor(Math.random() * freeCells.length );
+
+  	
+  	freeCells[randomCell].appendChild(sign);
+  	freeCells[randomCell].className = "zeroSign";
+
+  	moveCounter++;
+
+  }
+
+
   function defineWinner(){
   	
   	for(var i = 1; i <= 3; i++){
@@ -47,6 +75,20 @@ function TicTacToe(options){
   	}
 
   }
+  function selectModeOfGame(){
+  	var beforeElem = document.querySelector(".beforeGame");
+  	beforeElem.children[1].onclick = function(){
+  		isOnePlayer = true;
+  		overlay.hidden = true;
+			beforeElem.hidden = true;
+		};
+		beforeElem.children[2].onclick = function(){
+  		isOnePlayer = false;
+  		overlay.hidden = true;
+			beforeElem.hidden = true;
+		};
+		
+	}
 
   function endTheGame(result){
   	overlay.hidden = false;
@@ -66,6 +108,7 @@ function TicTacToe(options){
   			messageTitle.style.color = "blue";
 			})();break;
   	}
+
   	buttonContinue.onclick = function(e){
   		overlay.hidden = true;
   		resultMessage.hidden = true;
@@ -82,38 +125,46 @@ function TicTacToe(options){
 			cells[i].className="";
 		}
  	}
+ 
  	moveCounter = 0;
  	elem.onclick = startGame;
  }
 	
+	function checkEndOfGame(){
+		if(moveCounter > 4) { 
+			switch( defineWinner() ){
+				case "crossSign": {
+					endTheGame("cross");
+					elem.onclick = null;
+					return true;
+		      }
+				case "zeroSign": {
+					endTheGame("zero");
+					elem.onclick = null;
+					return true;
+				}
+				case "draw": {
+					endTheGame("draw");
+					elem.onclick = null;
+					return true;
+				}
+			} 
+			return false;
+	 }
+ }
 
 	function startGame(event){
 		var target = event.target;
 		var td = target.closest("td");
 		if(td.className) return;
 		makeMove(target);
+		if( checkEndOfGame() ) return;
 		
-		if(moveCounter > 4) { 
-			switch( defineWinner() ){
-				case "crossSign": {
-					endTheGame("cross");
-					elem.onclick = null;
-					break;
-		      }
-				case "zeroSign": {
-					endTheGame("zero");
-					elem.onclick = null;
-					break;
-				}
-				case "draw": {
-					endTheGame("draw");
-					elem.onclick = null;
-					break;
-				}
-			} 
-			return;
-	  }
- }
+	 if(isOnePlayer){
+			computerMove();
+			if( checkEndOfGame() ) return;
+		}
+  }
 
 
 	elem.onclick = startGame;
