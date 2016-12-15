@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="container">
+<h1 class="gameTitle">Крестики-нолики <span class="createdBy">(by Slava-Nik ©)<span></h1>
+<table id="field">
+		<tbody>
+			<tr>
+				<td row="1" col="1" ld></td>
+				<td row="1" col="2"></td>
+				<td row="1" col="3" rd></td>
+			</tr>
+			<tr>
+				<td row="2" col="1"></td>
+				<td row="2" col="2" ld rd></td>
+				<td row="2" col="3"></td>
+			</tr>
+			<tr>
+				<td row="3" col="1" rd></td>
+				<td row="3" col="2"></td>
+				<td row="3" col="3" ld></td>
+			</tr>
+		</tbody>
+</table>
+
+</div>	
+
+<div class="overlay" hidden></div>
+<div class="resultMessage" hidden>
+	<h2 class="resultTitle">Победили крестики!</h2>
+	<button class="continue">Продолжить игру!</button>
+</div>
+
+
+<script src="js/ticTacToe.js"></script>
+
+<script>
+
+var ticTacToe = new TicTacToe({
+	elem: document.getElementById("field")
+});
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
