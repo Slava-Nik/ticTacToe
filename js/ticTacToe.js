@@ -26,6 +26,7 @@ function TicTacToe(options){
 
   
   function computerMove(){
+
   	var sign = document.createElement("div");
   	sign.className="zero";
   	var cells = elem.querySelectorAll("td");
@@ -38,11 +39,10 @@ function TicTacToe(options){
   	}
   	var randomCell = Math.floor(Math.random() * freeCells.length );
 
-  	
   	freeCells[randomCell].appendChild(sign);
   	freeCells[randomCell].className = "zeroSign";
-
-  	moveCounter++;
+		
+		moveCounter++;
 
   }
 
