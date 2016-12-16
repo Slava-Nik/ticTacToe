@@ -332,7 +332,8 @@ function TicTacToe(options){
 	function startGame(event){
 		var target = event.target;
 		var td = target.closest("td");
-		if(td.className) return;
+		debugger;
+		if(!td || td.className) return;
 		makeMove(target);
 		if( checkEndOfGame() ) return;
 		
