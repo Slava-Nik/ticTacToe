@@ -234,14 +234,14 @@ function TicTacToe(options){
   	var complexityElem = document.querySelector(".complexityElem");
   	beforeElem.children[1].onclick = function(){
   		isOnePlayer = true;
-  		beforeElem.hidden = true;
+  		beforeElem.parentNode.removeChild(beforeElem);
   		complexityElem.hidden = false;
   		selectComplexityLevel(complexityElem);
 		};
 		beforeElem.children[2].onclick = function(){
   		isOnePlayer = false;
   		overlay.hidden = true;
-			beforeElem.hidden = true;
+			beforeElem.parentNode.removeChild(beforeElem);
 		};
 		
 	}
@@ -250,17 +250,17 @@ function TicTacToe(options){
 		elem.children[1].onclick = function(){
   		complexityMode = "easy";
   		overlay.hidden = true;
-  		elem.hidden = true;
+  		elem.parentNode.removeChild(elem);
 		};
 		elem.children[2].onclick = function(){
   		complexityMode = "medium";
   		overlay.hidden = true;
-			elem.hidden = true;
+			elem.parentNode.removeChild(elem);
 		};
 		elem.children[3].onclick = function(){
   		complexityMode = "difficult";
   		overlay.hidden = true;
-			elem.hidden = true;
+			elem.parentNode.removeChild(elem);
 		};
 		
 	}
