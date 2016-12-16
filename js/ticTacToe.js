@@ -35,7 +35,8 @@ function TicTacToe(options){
   function mediumComputerMove(){
 
   	var sign = document.createElement("div");
-  	sign.className="zero";
+  	setTimeout(function(){ sign.className="zero";}, 500); 
+
 
 		var vulnerableCell = defineVulnerableCell();
 
@@ -52,7 +53,7 @@ function TicTacToe(options){
 	function difficultComputerMove(){
 
 		var sign = document.createElement("div");
-  	sign.className="zero";
+  	setTimeout(function(){ sign.className="zero";}, 500); 
 
   	var victoryCell = defineVictoryCell();
     if(victoryCell){
@@ -176,7 +177,7 @@ function TicTacToe(options){
   function randomMove(){
   	 
   	  var sign = document.createElement("div");
-  		sign.className="zero";
+  		setTimeout(function(){ sign.className="zero";}, 500); 
       var cells = elem.querySelectorAll("td");
   		var freeCells = [];
 
